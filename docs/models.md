@@ -34,7 +34,8 @@
 - max_teams : int
 - admin : User id
 - starting_budget : int
-- status : enum("setup" | "auction" | "active" | "ended")
+- status : enum("setup" | "auction" | "active" | "ended") <!-- cioè auction ?? -->
+- type : enum("classic", "mantra")
 - is_public : boolean
 - createdAt : datetime
 - updatedAt : datetime
@@ -73,6 +74,14 @@
 - id : uuid
 - real_matchday_id : RealMatchday id
 - player_id : Player id
+- vote : double
+- fantavote : double
+- goals : int
+- goals_conceded : int
+- assists : int
+- yellow_card : boolean
+- red_card : boolean
+- minutes_played : int
 
 ## Standing
 
@@ -102,9 +111,10 @@
 
 - id : uuid
 - lineup_id : Lineup id
-- team_player : TeamPlayer id
+- team_player_id : TeamPlayer id
 - slot_type : enum("starter" | "bench")
 - position : string
+- bench_order : int
 
 ## TeamLeague
 
@@ -120,9 +130,10 @@
 - budget_spent : int
 - weekly_income : int
 - salary_cost : int
-- stadium_level: int
-- store_level: int
-- sponsor_tier: int
+- stadium_level : int
+- store_level : int
+- hq_level : int
+- sponsor_id: Sponsor id
 - createdAt : datetime
 - updatedAt : datetime
 
@@ -161,7 +172,7 @@
 - id : uuid
 - first_name : string
 - last_name : string
-- role : enum
+- role : enum("Por", "Dd", "Ds", "Dc", "B", "E", "M", "C", "W", "T", "A", "Pc")
 - team_serie_a_id : TeamSerieA Id
 - shirt_number : int
 - nationality : string
@@ -170,7 +181,7 @@
 - foot_pref : enum("right" | "left" | "both")
 - description : string
 - photo_url : string
-- status : enum ("Available", "Injured", "Suspended")
+- status : enum ("available", "injured", "suspended")
 - isActive : boolean
 - updatedAt : datetime
 
@@ -179,7 +190,7 @@
 - id : uuid
 - player_id : Player id
 - value : int
-- updatedAt : datetime
+- updatedAt : datetime <!-- così no storico, ma aggiornamento-->
 
 ## PlayerStats
 
@@ -205,15 +216,62 @@
 - logo_url : string
 - tier : int
 - weekly_income : int
+- half_season_income : int
+- final_season_income : int <!-- da capire se portare su più stagioni -->
 
 ## Structures
 
-- type : enum("Stadium" | "Store" | "HQ")
+- type : enum("stadium" | "store" | "hq")
 - name : string
 - level : int
 - weekly_income : int
 - upgrade_cost : int
 
-## Asta (da capire il funzionamento)
+## AuctionSession
+
+- id : uuid
+- league_id : League id
+- status : enum("completed", "scheduled", "active", "paused"?)
+- type : enum("live", "sealed bid") <!-- inizialmente solo live -->
+- player_id : Player id
+- highest_bid : int
+- winner_team_id : TeamLeague id
+- timestamp : id
+
+## AuctionBidLog
+
+- id : uuid
+- auction_session_id : AuctionSession id
+- team_league_id : TeamLeague id
+- amount : int
+- timestamp : datetime
 
 ## Trasferimento
+
+- id : uuid
+- league_id : League id
+- sender_team_id : TeamLeague id
+- receiver_team_id : TeamLeague id (null se svincolato)
+- type : enum("Trade", "Market buy", "Market release")
+- status : enum("pending" | "accepted" | "rejected" | "cancelled" | "approved by admin")
+- cash_exchanged : int
+- createdAt : datetime
+- resolvedAt : datetime
+
+## TransferItem (Per scambi con più giocatori)
+
+<!-- es: 2 giocatori per 1 più crediti-->
+
+- id : uuid
+- transfer_id : Trasferimento id
+- player_id : Player id
+- direction : enum("from sender" | "to sender")
+
+## FinancialLog
+
+- id : uuid
+- team_league_id : TeamLeague id
+- amount : int
+- transaction_type : enum("market_buy", "market_sell", "trade_adjustment", "sponsor_income", "stadium_income", "structure_upgrade", "salary_payment")
+- description : string
+- createdAt : datetime
