@@ -1,0 +1,58 @@
+[
+  {
+    "id": "t501-borgonuovo-sponsor",
+    "team_league_id": "u101-borgonuovo",
+    "amount": 15,
+    "transaction_type": "sponsor_income",
+    "description": "Incasso settimanale sponsor principale",
+    "createdAt": "2026-07-07T08:00:00Z"
+  },
+  {
+    "id": "t502-borgonuovo-salary",
+    "team_league_id": "u101-borgonuovo",
+    "amount": -20,
+    "transaction_type": "salary_payment",
+    "description": "Pagamento stipendi della rosa - Giornata 1",
+    "createdAt": "2026-07-06T22:00:00Z"
+  },
+  {
+    "id": "t503-borgonuovo-buy",
+    "team_league_id": "u101-borgonuovo",
+    "amount": -45,
+    "transaction_type": "market_buy",
+    "description": "Acquisto a titolo definitivo: Alessandro Bastoni",
+    "createdAt": "2026-07-04T15:30:00Z"
+  },
+  {
+    "id": "t504-lavandonia-upgrade",
+    "team_league_id": "u102-lavandonia",
+    "amount": -150,
+    "transaction_type": "structure_upgrade",
+    "description": "Ammodernamento Store Ufficiale del Club (Livello 2)",
+    "createdAt": "2026-07-07T11:15:00Z"
+  },
+  {
+    "id": "t505-lavandonia-sponsor",
+    "team_league_id": "u102-lavandonia",
+    "amount": 10,
+    "transaction_type": "sponsor_income",
+    "description": "Incasso settimanale sponsor secondario",
+    "createdAt": "2026-07-07T08:00:00Z"
+  },
+  {
+    "id": "t506-lavandonia-salary",
+    "team_league_id": "u102-lavandonia",
+    "amount": -17,
+    "transaction_type": "salary_payment",
+    "description": "Pagamento stipendi della rosa - Giornata 1",
+    "createdAt": "2026-07-06T22:00:00Z"
+  },
+  {
+    "id": "t507-lavandonia-buy",
+    "team_league_id": "u102-lavandonia",
+    "amount": -85,
+    "transaction_type": "market_buy",
+    "description": "Acquisto asta live: Lautaro Martinez",
+    "createdAt": "2026-07-03T18:45:00Z"
+  }
+]
