@@ -12,9 +12,9 @@
 - birth_date: date
 - gender : enum("M" | "F" | "O" | "N")
 - avatar_url : string
-- createdAt : datetime
-- updatedAt : datetime
-- isActive : boolean
+- created_at : datetime
+- updated_at : datetime
+- is_active : boolean
 
 ## UserPref
 
@@ -25,7 +25,7 @@
 - notifications_email : boolean
 - notifications_push : boolean
 - theme : enum("light" | "dark" | "system")
-- updatedAt : datetime
+- updated_at : datetime
 
 ## League
 
@@ -37,8 +37,8 @@
 - status : enum("setup" | "auction" | "active" | "ended") <!-- cioè auction ?? -->
 - type : enum("classic", "mantra")
 - is_public : boolean
-- createdAt : datetime
-- updatedAt : datetime
+- created_at : datetime
+- updated_at : datetime
 
 ## RealMatchday
 
@@ -67,7 +67,7 @@
 - home_goals : int
 - away_goals : int
 - result : enum("home_win" | "away_win" | "draw")
-- updatedAt : datetime
+- updated_at : datetime
 
 ## PlayerMatchdayScore (da capire cosa mettere)
 
@@ -94,9 +94,9 @@
 - lost: int
 - points: int
 - rank : int
-- total_score_for : int
-- total_score_against : int
-- updatedAt : datetime
+- total_score_for : double
+- total_score_against : double
+- updated_at : datetime
 
 ## Lineup
 
@@ -105,7 +105,7 @@
 - team_id : TeamLeague id
 - module : string
 - is_locked : boolean
-- submittedAt : datetime
+- submitted_at : datetime
 
 ## LineupSlot
 
@@ -119,8 +119,8 @@
 ## TeamLeague
 
 - id : uuid
-- leagueId : League id
-- userId : User id
+- league_id : League id
+- user_id : User id
 - name : string
 - logo : Logo id
 - shirt_type : string
@@ -134,17 +134,16 @@
 - store_level : int
 - hq_level : int
 - sponsor_id: Sponsor id
-- createdAt : datetime
-- updatedAt : datetime
+- created_at : datetime
+- updated_at : datetime
 
 ## LeagueMembership
 
 - id : uuid
 - league_id : League id
 - user_id : User id
-- team_id : TeamLeague id (se creato)
 - role : enum("commissioner" | "member")
-- joinedAt : datetime
+- joined_at : datetime
 
 ## TeamPlayer
 
@@ -153,6 +152,8 @@
 - player_id : Player id
 - purchased_price : int
 - salary: int
+- status : enum("active" | "released" | "transferred_out")
+- released_at : datetime (nullable)
 
 ## TeamSerieA
 
@@ -165,7 +166,7 @@
 - secondary_color : string
 - stadium_name : string
 - is_active : boolean
-- updatedAt : datetime
+- updated_at : datetime
 
 ## Player
 
@@ -182,15 +183,15 @@
 - description : string
 - photo_url : string
 - status : enum ("available", "injured", "suspended")
-- isActive : boolean
-- updatedAt : datetime
+- is_active : boolean
+- updated_at : datetime
 
 ## MarketValues
 
 - id : uuid
 - player_id : Player id
 - value : int
-- updatedAt : datetime <!-- così no storico, ma aggiornamento-->
+- updated_at : datetime <!-- così no storico, ma aggiornamento-->
 
 ## PlayerStats
 
@@ -207,7 +208,7 @@
 - red_cards : int
 - avg_vote : double
 - avg_fantavote : double
-- updatedAt : datetime
+- updated_at : datetime
 
 ## Sponsor
 
@@ -221,6 +222,7 @@
 
 ## Structures
 
+- id : uuid
 - type : enum("stadium" | "store" | "hq")
 - name : string
 - level : int
@@ -231,12 +233,20 @@
 
 - id : uuid
 - league_id : League id
-- status : enum("completed", "scheduled", "active", "paused"?)
+- status : enum("completed" | "scheduled" | "active" | "paused"?)
 - type : enum("live", "sealed bid") <!-- inizialmente solo live -->
+- created_at : datetime
+
+## AuctionLot
+- id : uuid
+- auction_session_id : AuctionSession id
 - player_id : Player id
-- highest_bid : int
-- winner_team_id : TeamLeague id
-- timestamp : id
+- status : enum("upcoming" | "active" | "sold" | "unsold")
+- starting_price : int
+- highest_bid : int (nullable)
+- winner_team_id : TeamLeague id (nullable)
+- started_at : datetime (nullable)
+- closed_at : datetime (nullable)
 
 ## AuctionBidLog
 
@@ -246,17 +256,31 @@
 - amount : int
 - timestamp : datetime
 
-## Trasferimento
+## MarketListing
 
 - id : uuid
 - league_id : League id
+- seller_team_id : TeamLeague id
+- player_id : Player id
+- asking_price : int (nullable)
+- status : enum("open" | "closed" | "cancelled")
+- created_at : datetime
+- closed_at : datetime (nullable)
+
+## Transfer
+
+- id : uuid
+- league_id : League id
+- listing_id : MarketListing id (nullable)  <!-- da usare per trattative iniziate come post sulla bacheca, serve per accettare la vincente e chiudere le altre offerte -->
 - sender_team_id : TeamLeague id
 - receiver_team_id : TeamLeague id (null se svincolato)
-- type : enum("Trade", "Market buy", "Market release")
-- status : enum("pending" | "accepted" | "rejected" | "cancelled" | "approved by admin")
+- type : enum("Trade", "Market buy", "Market release", "Loan")
+- status : enum("Pending" | "Accepted" | "Rejected" | "Cancelled")
+- admin_approved_by : User id (nullable)
+- admin_approved_at : datetime (nullable)
 - cash_exchanged : int
-- createdAt : datetime
-- resolvedAt : datetime
+- created_at : datetime
+- resolved_at : datetime
 
 ## TransferItem (Per scambi con più giocatori)
 
@@ -267,11 +291,25 @@
 - player_id : Player id
 - direction : enum("from sender" | "to sender")
 
+## Loan
+- id : uuid
+- league_id : League id
+- transfer_id : Transfer id
+- player_id : Player id
+- from_team_id : TeamLeague id
+- to_team_id : TeamLeague id
+- type : enum("dry" | "with_buyout")
+- buyout_price : int (nullable)
+- starts_at : datetime
+- expires_at : datetime
+- status : enum("active" | "returned" | "bought_out" | "cancelled")
+- resolved_at : datetime (nullable)
+
 ## FinancialLog
 
 - id : uuid
 - team_league_id : TeamLeague id
 - amount : int
-- transaction_type : enum("market_buy", "market_sell", "trade_adjustment", "sponsor_income", "stadium_income", "structure_upgrade", "salary_payment")
+- transaction_type : enum("market_buy", "market_sell", "trade_adjustment", "sponsor_income", "stadium_income", "structure_upgrade", "salary_payment", "loan_buyout", "auction_win")
 - description : string
-- createdAt : datetime
+- created_at : datetime
