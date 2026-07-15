@@ -23,6 +23,7 @@ function App() {
               </h2>
               <button
                 className="text-white px-2 py-3 rounded hover:bg-green-500 transition-colors cursor-pointer"
+                aria-label="Chiudi menu"
                 onClick={() => setIsOpen(false)}
               >
                 <svg
@@ -74,6 +75,7 @@ function App() {
             {!isOpen && (
               <button
                 className="text-white px-2 py-3 rounded hover:bg-green-500 transition-colors cursor-pointer"
+                aria-label="Apri menu"
                 onClick={() => setIsOpen(true)}
               >
                 <svg
@@ -96,9 +98,7 @@ function App() {
             </h1>
           </header>
 
-         <div className="flex-1 p-6">
-            <Outlet />
-          </div>
+          <Outlet />
 
         </div>
       </div>
