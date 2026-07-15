@@ -13,8 +13,8 @@
     "description": "Portiere esperto, ottimo tra i pali.",
     "photo_url": "https://example.com/players/sommer.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u102-maignan-por",
@@ -30,8 +30,8 @@
     "description": "Portiere esplosivo e abile nell'impostazione.",
     "photo_url": "https://example.com/players/maignan.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u103-digregorio-por",
@@ -47,8 +47,8 @@
     "description": "Portiere dai grandi riflessi.",
     "photo_url": "https://example.com/players/digregorio.png",
     "status": "injured",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u104-bastoni-dcb",
@@ -64,8 +64,8 @@
     "description": "Difensore di impostazione, perfetto braccetto.",
     "photo_url": "https://example.com/players/bastoni.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u105-bremer-dc",
@@ -81,8 +81,8 @@
     "description": "Difensore centrale dominante fisicamente.",
     "photo_url": "https://example.com/players/bremer.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u106-pavard-dddc",
@@ -98,8 +98,8 @@
     "description": "Terzino destro o difensore centrale di caratura internazionale.",
     "photo_url": "https://example.com/players/pavard.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u107-dimarco-dse",
@@ -115,8 +115,8 @@
     "description": "Spinta costante sulla fascia sinistra, mancino educato.",
     "photo_url": "https://example.com/players/dimarco.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u108-theo-dse",
@@ -132,8 +132,8 @@
     "description": "Terzino sinistro devastante in progressione.",
     "photo_url": "https://example.com/players/theo.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u109-dilorenzo-dde",
@@ -149,8 +149,8 @@
     "description": "Terzino destro affidabile e di spinta.",
     "photo_url": "https://example.com/players/dilorenzo.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u110-scalvini-dcb",
@@ -166,8 +166,8 @@
     "description": "Giovane braccetto di difesa con licenza di spinta.",
     "photo_url": "https://example.com/players/scalvini.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u111-buongiorno-dc",
@@ -183,8 +183,8 @@
     "description": "Difensore centrale arcigno e insuperabile nel vecchio stampo.",
     "photo_url": "https://example.com/players/buongiorno.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u112-cambiaso-ddds",
@@ -200,8 +200,8 @@
     "description": "Terzino ambidestro fluidificante.",
     "photo_url": "https://example.com/players/cambiaso.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u113-mancini-dc",
@@ -217,8 +217,8 @@
     "description": "Difensore carismatico, pericoloso sui calci piazzati.",
     "photo_url": "https://example.com/players/mancini.png",
     "status": "suspended",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u114-tomori-dc",
@@ -234,8 +234,8 @@
     "description": "Difensore centrale rapido nei recuperi.",
     "photo_url": "https://example.com/players/tomori.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u115-calhanoglu-mc",
@@ -251,8 +251,8 @@
     "description": "Regista metodista, infallibile cecchino dal dischetto.",
     "photo_url": "https://example.com/players/calhanoglu.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u116-barella-c",
@@ -268,8 +268,8 @@
     "description": "Centrocampista totale, polmoni e qualità.",
     "photo_url": "https://example.com/players/barella.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u117-lobotka-m",
@@ -285,8 +285,8 @@
     "description": "Metronomo del centrocampo, bravissimo a proteggere palla.",
     "photo_url": "https://example.com/players/lobotka.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u118-koopmeiners-ct",
@@ -302,8 +302,8 @@
     "description": "Trequartista col vizio del gol e grande tiro da fuori.",
     "photo_url": "https://example.com/players/koopmeiners.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u119-pulisic-wt",
@@ -319,8 +319,8 @@
     "description": "Ala offensiva rapida e letale negli inserimenti.",
     "photo_url": "https://example.com/players/pulisic.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u120-loftus-ct",
@@ -336,8 +336,8 @@
     "description": "Centrocampista fisico d'incursione.",
     "photo_url": "https://example.com/players/loftus.png",
     "status": "injured",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u121-ederson-mc",
@@ -353,8 +353,8 @@
     "description": "Diga di centrocampo con ottimi tempi di inserimento.",
     "photo_url": "https://example.com/players/ederson.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u122-pellegrini-ct",
@@ -370,8 +370,8 @@
     "description": "Trequartista tecnico, battitore di piazzati.",
     "photo_url": "https://example.com/players/pellegrini.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u123-frattesi-c",
@@ -387,8 +387,8 @@
     "description": "Maestro degli inserimenti offensivi dalla panchina.",
     "photo_url": "https://example.com/players/frattesi.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u124-zaccagni-w",
@@ -404,8 +404,8 @@
     "description": "Esterno d'attacco tecnico, bravissimo nell'uno contro uno.",
     "photo_url": "https://example.com/players/zaccagni.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u125-lautaro-pc",
@@ -421,8 +421,8 @@
     "description": "Il Toro, rapace d'area e capitano.",
     "photo_url": "https://example.com/players/lautaro.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u126-vlahovic-pc",
@@ -438,8 +438,8 @@
     "description": "Centravanti potente, finalizzatore mancino.",
     "photo_url": "https://example.com/players/vlahovic.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u127-leao-a",
@@ -455,8 +455,8 @@
     "description": "Fisico e velocità devastante sulla fascia sinistra.",
     "photo_url": "https://example.com/players/leao.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u128-dybala-a",
@@ -472,8 +472,8 @@
     "description": "La Joya, classe pura e colpi di genio imprevedibili.",
     "photo_url": "https://example.com/players/dybala.png",
     "status": "injured",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u129-thuram-apc",
@@ -489,8 +489,8 @@
     "description": "Attaccante moderno associativo, abilissimo nei movimenti spaziali.",
     "photo_url": "https://example.com/players/thuram.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   },
   {
     "id": "u130-kvara-a",
@@ -506,7 +506,7 @@
     "description": "Dribbling ipnotico e imprevedibilità totale.",
     "photo_url": "https://example.com/players/kvara.png",
     "status": "available",
-    "isActive": true,
-    "updatedAt": "2026-07-07T10:00:00Z"
+    "is_active": true,
+    "updated_at": "2026-07-07T10:00:00Z"
   }
 ]
