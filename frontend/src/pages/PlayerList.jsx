@@ -38,7 +38,9 @@ export default function PlayerList() {
   const playersWithStats = useMemo(() => unionJson(players, players_stats), []); //players, players_stats da mettere come dipendenze con i dati reali
 
   const filteredPlayers = playersWithStats.filter(
-    (player) => roleInput.length === 0 || roleInput.includes(player.role),
+    (player) =>
+      (roleInput.length === 0 || roleInput.includes(player.role)) &&
+      player.last_name.toLowerCase().includes(nameInput.toLowerCase()),
   );
   return (
     <main className="flex flex-col w-full px-4 pb-8">
@@ -170,8 +172,12 @@ export default function PlayerList() {
                       {player.role}
                     </span>
                   </td>
-                  <td className="p-2 font-bold">{player.last_name}</td>
-                  <td className="p-2 font-bold">{player.team_serie_a_id}</td>
+                  <td className="p-2 text-center font-bold">
+                    {player.last_name}
+                  </td>
+                  <td className="p-2 text-center font-bold">
+                    {player.team_serie_a_id}
+                  </td>
                   <td className="p-2 text-center text-gray-300">
                     {player.stats.goals}
                   </td>
