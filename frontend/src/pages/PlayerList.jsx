@@ -1,7 +1,11 @@
 import { useState, useMemo } from "react";
 import players from "../mocks/players.json";
 import players_stats from "../mocks/player_stats.json";
-import {roleColors} from "../utils/roles.js"
+import {
+  roleColorsMantra,
+  roleColorsClassic,
+  roleClassic,
+} from "../utils/roles.js";
 
 const unionJson = (players, players_stats) => {
   return players.map((player) => {
@@ -25,10 +29,17 @@ const unionJson = (players, players_stats) => {
 
 export default function PlayerList() {
   const [isMantra, setIsMantra] = useState(false);
+  const [nameInput, setNameInput] = useState("");
+  const [roleInput, setRoleInput] = useState([]);
+  const [teamInput, setTeamInput] = useState("");
 
-
+  const rolesClassic = Object.keys(roleClassic);
+  const rolesMantra = Object.keys(roleColorsMantra);
   const playersWithStats = useMemo(() => unionJson(players, players_stats), []); //players, players_stats da mettere come dipendenze con i dati reali
 
+  const filteredPlayers = playersWithStats.filter(
+    (player) => roleInput.length === 0 || roleInput.includes(player.role),
+  );
   return (
     <main className="flex flex-col w-full px-4 pb-8">
       <div className="flex justify-between w-full items-center gap-4 mb-8">
@@ -36,6 +47,7 @@ export default function PlayerList() {
           type="text"
           placeholder="Cerca giocatore..."
           className="flex-1 bg-green-800 h-14 text-xl text-gray-100 placeholder-gray-100 border-2 rounded-lg border-green-900 p-2"
+          onChange={(e) => setNameInput(e.target.value)}
         />
         <div className="flex items-center gap-4 h-14 md:w-212.5 w-full bg-green-800 text-xl text-gray-100 border-2 rounded-lg border-green-900 px-4">
           <label className="flex items-center gap-3 cursor-pointer text-gray-100 text-xl">
@@ -73,61 +85,48 @@ export default function PlayerList() {
           </label>
           {isMantra ? (
             <div className="flex items-center gap-2">
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                Por
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                Dd
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                Dc
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                B
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                Ds
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                M
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                C
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                E
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                W
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                T
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                A
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                Pc
-              </button>
+              {rolesMantra.map((role) => (
+                <button
+                  key={role}
+                  className={`text-gray-100 rounded-full w-10 h-10 cursor-pointer inline-flex items-center
+                    justify-center ${roleInput.includes(role) ? roleColorsMantra[role][0] : roleColorsMantra[role][1]}`}
+                  onClick={() => {
+                    !roleInput.includes(role)
+                      ? setRoleInput([...roleInput, role])
+                      : setRoleInput(
+                          roleInput.filter((tempRole) => tempRole != role),
+                        );
+                  }}
+                >
+                  {role}
+                </button>
+              ))}
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <button className="text-gray-100 border-2 rounded-lg w-10 h-10 cursor-pointer">
-                Por
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-11 h-10 cursor-pointer">
-                Def
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-11 h-10 cursor-pointer">
-                Cen
-              </button>
-              <button className="text-gray-100 border-2 rounded-lg w-11 h-10 cursor-pointer">
-                Att
-              </button>
+              {rolesClassic.map((role) => (
+                <button
+                  key={role}
+                  className={`text-gray-100 rounded-full w-10 h-10 cursor-pointer inline-flex items-center 
+                    justify-center ${roleInput.includes(role) ? roleColorsClassic[role][0] : roleColorsClassic[role][1]}`}
+                  onClick={() => {
+                    !roleInput.includes(role)
+                      ? setRoleInput([...roleInput, role])
+                      : setRoleInput(
+                          roleInput.filter((tempRole) => tempRole != role),
+                        );
+                  }}
+                >
+                  {role}
+                </button>
+              ))}
             </div>
           )}
         </div>
-        <select className="flex-1 h-14 bg-green-800 text-xl text-gray-100 border-2 rounded-lg border-green-900 p-2">
+        <select
+          className="flex-1 h-14 bg-green-800 text-xl text-gray-100 border-2 rounded-lg border-green-900 p-2"
+          onChange={(e) => setTeamInput(e.target.value)}
+        >
           <option>Inter</option>
           <option>Milan</option>
           <option>Juventus</option>
@@ -152,13 +151,20 @@ export default function PlayerList() {
             </tr>
           </thead>
           <tbody>
-            {playersWithStats.length > 0 ? (
-              playersWithStats.map((player) => (
+            {filteredPlayers.length > 0 ? (
+              filteredPlayers.map((player) => (
                 <tr
                   key={player.id}
                   className="border-b border-green-800 hover:bg-green-900"
                 >
-                  <td className="p-2 text-center font-bold"><span className={`rounded-full w-8 h-8 inline-flex items-center justify-center ${roleColors[player.role]}`}>{player.role}</span></td>
+                  <td className="p-2 text-center font-bold">
+                    <span
+                      className={`rounded-full w-8 h-8 inline-flex items-center justify-center 
+                        ${roleColorsMantra[player.role][0]}`}
+                    >
+                      {player.role}
+                    </span>
+                  </td>
                   <td className="p-2 font-bold">{player.last_name}</td>
                   <td className="p-2 font-bold">{player.team_serie_a_id}</td>
                   <td className="p-2 text-center text-gray-300">
@@ -185,7 +191,14 @@ export default function PlayerList() {
                 </tr>
               ))
             ) : (
-              <td colSpan={10}>Nessun calciatore trovato.</td>
+              <tr>
+                <td
+                  colSpan={10}
+                  className="text-2xl font-bold text-gray-200 text-center"
+                >
+                  Nessun calciatore trovato.
+                </td>
+              </tr>
             )}
           </tbody>
         </table>
