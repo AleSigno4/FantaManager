@@ -40,7 +40,8 @@ export default function PlayerList() {
   const filteredPlayers = playersWithStats.filter(
     (player) =>
       (roleInput.length === 0 || roleInput.includes(player.role)) &&
-      player.last_name.toLowerCase().includes(nameInput.toLowerCase()),
+      player.last_name.toLowerCase().includes(nameInput.toLowerCase()) &&
+      (teamInput === "" || player.team_serie_a_id === teamInput),
   );
   return (
     <main className="flex flex-col w-full px-4 pb-8">
@@ -132,13 +133,15 @@ export default function PlayerList() {
         </div>
         <select
           className="flex-1 h-14 bg-green-800 text-xl text-gray-100 border-2 rounded-lg border-green-900 p-2"
+          placeholder="Scegli squadra"
           onChange={(e) => setTeamInput(e.target.value)}
         >
-          <option>Inter</option>
-          <option>Milan</option>
-          <option>Juventus</option>
-          <option>Napoli</option>
-          <option>Atalanta</option>
+          <option value="">Tutte le squadre</option>
+          <option value="team-inter">Inter</option>
+          <option value="team-milan">Milan</option>
+          <option value="team-juventus">Juventus</option>
+          <option value="team-napoli">Napoli</option>
+          <option value="team-atalanta">Atalanta</option>
         </select>
       </div>
       <div className="overflow-hidden rounded-2xl border-2 border-green-900">
