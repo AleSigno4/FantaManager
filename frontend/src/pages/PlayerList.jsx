@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import players from "../mocks/players.json";
 import players_stats from "../mocks/player_stats.json";
+import {roleColors} from "../utils/roles.js"
 
 const unionJson = (players, players_stats) => {
   return players.map((player) => {
@@ -24,6 +25,7 @@ const unionJson = (players, players_stats) => {
 
 export default function PlayerList() {
   const [isMantra, setIsMantra] = useState(false);
+
 
   const playersWithStats = useMemo(() => unionJson(players, players_stats), []); //players, players_stats da mettere come dipendenze con i dati reali
 
@@ -156,7 +158,7 @@ export default function PlayerList() {
                   key={player.id}
                   className="border-b border-green-800 hover:bg-green-900"
                 >
-                  <td className="p-2 text-center font-bold">{player.role}</td>
+                  <td className="p-2 text-center font-bold"><span className={`rounded-full w-8 h-8 inline-flex items-center justify-center ${roleColors[player.role]}`}>{player.role}</span></td>
                   <td className="p-2 font-bold">{player.last_name}</td>
                   <td className="p-2 font-bold">{player.team_serie_a_id}</td>
                   <td className="p-2 text-center text-gray-300">
