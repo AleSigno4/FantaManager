@@ -151,7 +151,7 @@ export default function PlayerList() {
                 <button
                   key={role}
                   className={`text-gray-100 rounded-full w-10 h-10 cursor-pointer inline-flex items-center 
-                    justify-center ${roleInput.includes(roleClassic[role]) ? roleColorsClassic[role][0] : roleColorsClassic[role][1]}`}
+                    justify-center ${roleInput.includes(roleClassic[role][0]) ? roleColorsClassic[role][0] : roleColorsClassic[role][1]}`}
                   onClick={() => {
                     !roleInput.includes(roleClassic[role][0])
                       ? setRoleInput([...roleInput, ...roleClassic[role]])
