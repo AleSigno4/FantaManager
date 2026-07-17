@@ -21,7 +21,7 @@ const unionJson = (players, players_stats) => {
         red_cards: 0,
         avg_vote: 0,
         avg_fantavote: 0,
-        quotazione: 0,
+        quotation: 0,
       },
     };
   });
@@ -32,7 +32,19 @@ export default function PlayerList() {
   const [nameInput, setNameInput] = useState("");
   const [roleInput, setRoleInput] = useState([]);
   const [teamInput, setTeamInput] = useState("");
+  const [sortOrder, setSortOrder] = useState({ field: null, direction: "asc" });
 
+  const tableColumns = [
+    { label: "Nome", field: "last_name" },
+    { label: "Squadra", field: "team_serie_a_id" },
+    { label: "Gol Fatti", field: "stats.goals" },
+    { label: "Assist", field: "stats.assists" },
+    { label: "Ammonizioni", field: "stats.yellow_cards" },
+    { label: "Espulsioni", field: "stats.red_cards" },
+    { label: "Media voto", field: "stats.avg_vote" },
+    { label: "Media fantavoto", field: "stats.avg_fantavote" },
+    { label: "Quotazione", field: "stats.quotation" },
+  ];
   const rolesClassic = Object.keys(roleClassic);
   const rolesMantra = Object.keys(roleColorsMantra);
   const playersWithStats = useMemo(() => unionJson(players, players_stats), []); //players, players_stats da mettere come dipendenze con i dati reali
@@ -43,6 +55,31 @@ export default function PlayerList() {
       player.last_name.toLowerCase().includes(nameInput.toLowerCase()) &&
       (teamInput === "" || player.team_serie_a_id === teamInput),
   );
+
+  const getFieldValue = (player, field) => {
+    if (field.includes(".")) {
+      const [outer, inner] = field.split(".");
+      return player[outer][inner];
+    }
+    return player[field];
+  };
+
+  const sortedPlayers = [...filteredPlayers].sort((a, b) => {
+    if (!sortOrder.field) return 0;
+
+    const valueA = getFieldValue(a, sortOrder.field);
+    const valueB = getFieldValue(b, sortOrder.field);
+
+    let comparison = 0;
+    if (typeof valueA === "number" && typeof valueB === "number") {
+      comparison = valueA - valueB;
+    } else {
+      comparison = String(valueA).localeCompare(String(valueB));
+    }
+
+    return sortOrder.direction === "desc" ? -comparison : comparison;
+  });
+
   return (
     <main className="flex flex-col w-full px-4 pb-8">
       <div className="flex justify-between w-full items-center gap-4 mb-8">
@@ -146,23 +183,96 @@ export default function PlayerList() {
       </div>
       <div className="overflow-hidden rounded-2xl border-2 border-green-900">
         <table className="w-full bg-green-700 text-gray-100">
-          <thead className="bg-green-800 text-lg">
+          <thead className="bg-green-800 text-xl">
             <tr>
-              <th className="p-2">Ruolo</th>
-              <th className="p-2">Nome</th>
-              <th className="p-2">Squadra</th>
-              <th className="p-2">Gol fatti</th>
-              <th className="p-2">Assist</th>
-              <th className="p-2">Ammonizioni</th>
-              <th className="p-2">Espulsioni</th>
-              <th className="p-2">Media voto</th>
-              <th className="p-2">Media fantavoto</th>
-              <th className="p-2">Quotazione</th>
+              <th className="p-4">Ruolo</th>
+              {tableColumns.map((column) => (
+                <th
+                  key={column.label}
+                  className="p-4 cursor-pointer"
+                  onClick={() => {
+                    if (sortOrder.field === column.field) {
+                      if (sortOrder.direction === "asc")
+                        setSortOrder({
+                          field: column.field,
+                          direction: "desc",
+                        });
+                      else setSortOrder({ field: null, direction: "asc" });
+                    } else
+                      setSortOrder({
+                        field: column.field,
+                        direction: "asc",
+                      });
+                  }}
+                >
+                  <span className="flex items-center justify-center gap-1 group">
+                    {column.label}{" "}
+                    {sortOrder.field === column.field ? (
+                      sortOrder.direction === "asc" ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width={20}
+                          height={20}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#ababab"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M12 5l0 14" />
+                          <path d="M16 9l-4 -4" />
+                          <path d="M8 9l4 -4" />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width={20}
+                          height={20}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#ababab"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-down"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M12 5l0 14" />
+                          <path d="M16 15l-4 4" />
+                          <path d="M8 15l4 4" />
+                        </svg>
+                      )
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={20}
+                        height={20}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#ababab"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="icon icon-tabler icons-tabler-outline icon-tabler-arrows-up-down opacity-0 group-hover:opacity-100"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M7 3l0 18" />
+                        <path d="M10 6l-3 -3l-3 3" />
+                        <path d="M20 18l-3 3l-3 -3" />
+                        <path d="M17 21l0 -18" />
+                      </svg>
+                    )}
+                  </span>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {filteredPlayers.length > 0 ? (
-              filteredPlayers.map((player) => (
+            {sortedPlayers.length > 0 ? (
+              sortedPlayers.map((player) => (
                 <tr
                   key={player.id}
                   className="border-b border-green-800 hover:bg-green-900"
@@ -207,7 +317,7 @@ export default function PlayerList() {
             ) : (
               <tr>
                 <td
-                  colSpan={10}
+                  colSpan={tableColumns.length + 1}
                   className="text-2xl font-bold text-gray-200 text-center"
                 >
                   Nessun calciatore trovato.
