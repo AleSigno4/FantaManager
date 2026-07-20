@@ -181,15 +181,15 @@ export default function PlayerList() {
           <option value="team-atalanta">Atalanta</option>
         </select>
       </div>
-      <div className="overflow-hidden rounded-2xl border-2 border-green-900">
+      <div className="max-h-[70vh] overflow-y-auto rounded-2xl border-2 border-green-900 custom-scrollbar">
         <table className="w-full bg-green-700 text-gray-100">
-          <thead className="bg-green-800 text-xl">
+          <thead className="bg-green-800 text-xl top-0 sticky">
             <tr>
               <th className="p-4">Ruolo</th>
               {tableColumns.map((column) => (
                 <th
                   key={column.label}
-                  className="p-4 cursor-pointer"
+                  className="p-4 cursor-pointer group"
                   onClick={() => {
                     if (sortOrder.field === column.field) {
                       if (sortOrder.direction === "asc")
@@ -205,7 +205,7 @@ export default function PlayerList() {
                       });
                   }}
                 >
-                  <span className="flex items-center justify-center gap-1 group">
+                  <span className="flex items-center justify-center gap-1">
                     {column.label}{" "}
                     {sortOrder.field === column.field ? (
                       sortOrder.direction === "asc" ? (
@@ -256,7 +256,8 @@ export default function PlayerList() {
                         strokeWidth={2}
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="icon icon-tabler icons-tabler-outline icon-tabler-arrows-up-down opacity-0 group-hover:opacity-100"
+                        className="icon icon-tabler icons-tabler-outline icon-tabler-arrows-up-down opacity-0 
+                        group-hover:opacity-100 transition-opacity duration-200"
                       >
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M7 3l0 18" />
