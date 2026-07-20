@@ -1,11 +1,45 @@
-# Flutter
-frontend/.dart_tool/
-frontend/.packages
+# ==========================================
+# DIPENDENZE (node_modules)
+# ==========================================
+# Esclude i node_modules ovunque si trovino (root, frontend o backend)
+**/node_modules/
+
+# File di log degli errori di npm/yarn
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================================
+# VARIABILI D'AMBIENTE (SICUREZZA CHIAVI)
+# ==========================================
+# Blocca qualsiasi file .env in qualunque sottocartella
+**/.env
+**/.env.local
+**/.env.*.local
+
+# ==========================================
+# COMPILAZIONE E BUILD
+# ==========================================
+# Esclude le cartelle di produzione di React (Vite usa 'dist', i vecchi progetti 'build')
+frontend/dist/
 frontend/build/
+.vite/
 
-# Node
-backend/node_modules/
-backend/.env
-
-# OS
+# ==========================================
+# FILE DEL SISTEMA OPERATIVO
+# ==========================================
 .DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+
+# ==========================================
+# CONFIGURAZIONI EDITOR
+# ==========================================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
