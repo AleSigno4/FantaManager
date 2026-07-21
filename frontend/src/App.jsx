@@ -48,7 +48,11 @@ function App() {
                   Dashboard
                 </Link>
               </li>
-              <li><a href="#" className="text-white text-2xl hover:text-green-300">Lineup</a></li>
+              <li>
+                <Link to="/lineup" className="text-white text-2xl hover:text-green-300">
+                  Lineup
+                </Link>
+              </li>
               <li><a href="#" className="text-white text-2xl hover:text-green-300">Injuries</a></li>
               <li><a href="#" className="text-white text-2xl hover:text-green-300">Teams</a></li>
               <li><a href="#" className="text-white text-2xl hover:text-green-300">Calendar</a></li>

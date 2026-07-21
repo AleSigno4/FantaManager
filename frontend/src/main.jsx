@@ -6,6 +6,7 @@ import App from "./App.jsx";
 
 import Home from "./pages/Home.jsx";
 import PlayerList from "./pages/PlayerList.jsx";
+import Lineup from "./pages/Lineup.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "players",
         element: <PlayerList />,
+      },
+      {
+        path: "lineup",
+        element: <Lineup />,
       },
     ],
   },
