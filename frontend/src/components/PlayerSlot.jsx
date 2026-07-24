@@ -1,6 +1,19 @@
 import { roleColorsMantra } from "../utils/roles";
 
 export default function PlayerSlot({ slot, onSlotClick }) {
+  const tempWidth = "80";
+
+  const setColorBar = (width) => {
+    if(width < 25)
+      return "bg-gray-500";
+    else if(width < 50)
+      return "bg-red-500";
+    else if(width < 75)
+      return "bg-yellow-500";
+    else
+      return "bg-green-600";
+  }
+
   return (
     <button
       className="flex flex-col aspect-13/14 items-center justify-center bg-white/40 rounded-xl border-2 border-black text-center cursor-pointer"
@@ -11,8 +24,7 @@ export default function PlayerSlot({ slot, onSlotClick }) {
           <div className="flex flex-row pt-1.5 h-5/9">
             <div className="flex flex-col">
               <span
-                className={`rounded-full w-6 h-6 inline-flex items-center justify-center font-semibold text-sm 
-                                        ${roleColorsMantra[slot.player.role][0]}`}
+                className={`rounded-full w-6 h-6 inline-flex items-center justify-center font-semibold text-sm ${roleColorsMantra[slot.player.role][0]}`}
               >
                 {slot.player.role}
               </span>
@@ -28,11 +40,11 @@ export default function PlayerSlot({ slot, onSlotClick }) {
             Inter - Verona
           </h4>
           <div className="flex flex-row w-2/3 gap-2 items-center">
-            <h5 className="text-gray-100 text-xs">70%</h5>
+            <h5 className="text-gray-100 text-xs font-semibold">{tempWidth}%</h5>
             <div className="border bg-gray-100 rounded-2xl w-2/3 h-1 overflow-hidden">
               <div
-                className="bg-green-600 h-full"
-                style={{ width: "70%" }}
+                className={`${setColorBar(tempWidth)} h-full`}
+                style={{ width: tempWidth+"%"}}
               ></div>
             </div>
           </div>

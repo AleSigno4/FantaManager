@@ -41,6 +41,19 @@ const iconStatus = (status) => {
 };
 
 export default function PlayersModal({ slotChosen, onSelectPlayer, onClose }) {
+  const tempWidth = "20";
+
+  const setColorBar = (width) => {
+    if(width < 25)
+      return "bg-gray-500";
+    else if(width < 50)
+      return "bg-red-500";
+    else if(width < 75)
+      return "bg-yellow-500";
+    else
+      return "bg-green-600";
+  }
+
   const myPlayers = players.filter((player) => {
     if (slotChosen.position === "All") return true;
     return slotChosen.position.split("/").includes(player.role);
@@ -83,11 +96,11 @@ export default function PlayersModal({ slotChosen, onSelectPlayer, onClose }) {
                 {iconStatus(player.status)}
                 </div>
                 <div className="w-1/2 flex-1 flex-col">
-                  <h5 className="">70%</h5>
+                  <h5 className="">{tempWidth}%</h5>
                   <div className="w-full border border-gray-500 rounded-2xl h-1 overflow-hidden">
                     <div
-                      className="bg-green-600 h-full"
-                      style={{ width: "70%" }}
+                      className={`${setColorBar(tempWidth)} h-full`}
+                      style={{ width: tempWidth+"%" }}
                     ></div>
                   </div>
                 </div>
