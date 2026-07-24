@@ -1,4 +1,5 @@
 import players from "../mocks/players.json";
+import { setColorBar } from "../utils/helpers"
 import { roleColorsMantra } from "../utils/roles";  //importare anche il classic, fare un apposito controllo sul filtro
 
 const iconStatus = (status) => {
@@ -41,18 +42,7 @@ const iconStatus = (status) => {
 };
 
 export default function PlayersModal({ slotChosen, onSelectPlayer, onClose }) {
-  const tempWidth = "20";
-
-  const setColorBar = (width) => {
-    if(width < 25)
-      return "bg-gray-500";
-    else if(width < 50)
-      return "bg-red-500";
-    else if(width < 75)
-      return "bg-yellow-500";
-    else
-      return "bg-green-600";
-  }
+  const tempWidth = 20;
 
   const myPlayers = players.filter((player) => {
     if (slotChosen.position === "All") return true;
