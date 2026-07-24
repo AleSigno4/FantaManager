@@ -1,4 +1,4 @@
-export default function setColorBar(width) {
+export function getColorBar(width) {
     if(width < 25)
       return "bg-gray-500";
     else if(width < 50)

@@ -1,5 +1,5 @@
 import { roleColorsMantra } from "../utils/roles";
-import { setColorBar } from "../utils/helpers";
+import { getColorBar } from "../utils/helpers";
 
 
 export default function PlayerSlot({ slot, onSlotClick }) {
@@ -34,7 +34,7 @@ export default function PlayerSlot({ slot, onSlotClick }) {
             <h5 className="text-gray-100 text-xs font-semibold">{tempWidth}%</h5>
             <div className="border bg-gray-100 rounded-2xl w-2/3 h-1 overflow-hidden">
               <div
-                className={`${setColorBar(tempWidth)} h-full`}
+                className={`${getColorBar(tempWidth)} h-full`}
                 style={{ width: tempWidth+"%"}}
               ></div>
             </div>

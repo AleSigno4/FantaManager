@@ -1,5 +1,5 @@
 import players from "../mocks/players.json";
-import { setColorBar } from "../utils/helpers"
+import { getColorBar } from "../utils/helpers"
 import { roleColorsMantra } from "../utils/roles";  //importare anche il classic, fare un apposito controllo sul filtro
 
 const iconStatus = (status) => {
@@ -89,7 +89,7 @@ export default function PlayersModal({ slotChosen, onSelectPlayer, onClose }) {
                   <h5 className="">{tempWidth}%</h5>
                   <div className="w-full border border-gray-500 rounded-2xl h-1 overflow-hidden">
                     <div
-                      className={`${setColorBar(tempWidth)} h-full`}
+                      className={`${getColorBar(tempWidth)} h-full`}
                       style={{ width: tempWidth+"%" }}
                     ></div>
                   </div>
