@@ -24,10 +24,12 @@ export default function Lineup() {
     setModule(mod);
     if (typeFanta === "Classic") {
       setLineup(
-        classicModules[mod].map((role, indice) => ({
+        classicModules[mod].map((slotData, indice) => ({
           type: "starter",
           index: indice + 1,
-          position: role,
+          position: slotData.position,
+          x: slotData.x,
+          y: slotData.y,
           team_player_id: null,
         })),
       );
@@ -41,10 +43,12 @@ export default function Lineup() {
       );
     } else {
       setLineup(
-        mantraModules[mod].map((role, indice) => ({
+        mantraModules[mod].map((slotData, indice) => ({
           type: "starter",
           index: indice + 1,
-          position: role,
+          position: slotData.position,
+          x: slotData.x,
+          y: slotData.y,
           team_player_id: null,
         })),
       );
@@ -90,8 +94,8 @@ export default function Lineup() {
   };
 
   return (
-    <main className="flex flex-row items-center gap-6 px-4">
-      <div className="flex-5 h-full ml-4">
+    <main className="flex flex-1 min-h-0 flex-row gap-6 px-4">
+      <div className="flex-5 h-full ml-4 flex flex-col min-h-0">
         <div className="flex justify-between items-center">
           <h2 className="text-gray-100 text-3xl font-bold mb-4">Titolari</h2>
           <div className="flex gap-4 items-center">
@@ -101,43 +105,45 @@ export default function Lineup() {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className={`flex bg-white/40 ${isDropdownOpen ? "rounded-t-lg" : "rounded-lg"} text-lg text-gray-100 font-bold p-2 gap-2 items-center`}
               >
-                {module}<span className="inline-block">
-                {isDropdownOpen ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M6 15l6 -6l6 6" />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={24}
-                    height={24}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M6 9l6 6l6 -6" />
-                  </svg>
-                )}</span>
+                {module}
+                <span className="inline-block">
+                  {isDropdownOpen ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M6 15l6 -6l6 6" />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M6 9l6 6l6 -6" />
+                    </svg>
+                  )}
+                </span>
               </button>
               {isDropdownOpen && (
-                <div className="bg-white/40 rounded-b-lg text-lg text-gray-100 font-bold text-center absolute w-full top-full left-0">
+                <div className="bg-white/40 rounded-b-lg text-lg text-gray-100 font-bold text-center absolute w-full top-full left-0 z-50">
                   {typeFanta === "Classic"
                     ? Object.keys(classicModules).map((mod) => (
                         <button
@@ -168,7 +174,26 @@ export default function Lineup() {
             </div>
           </div>
         </div>
-        <div className="bg-white/50"></div>
+        <div className="bg-white/50 flex-1 min-h-0 overflow-hidden relative mb-6">
+          {lineup.map((slot) => {
+            return (
+              <div
+                key={slot.index}
+                className="w-[8%]"
+                style={{
+                  position: "absolute",
+                  top: `${slot.y}%`,
+                  left: `${slot.x}%`,
+                }}
+              >
+                <PlayerSlot
+                  slot={slot}
+                  onSlotClick={() => handleSlotClick(slot)}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
       <div className="flex-3 h-full p-4">
         <h2 className="text-gray-100 text-2xl font-bold mb-4">Panchina</h2>

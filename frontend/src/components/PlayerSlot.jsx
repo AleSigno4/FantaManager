@@ -8,7 +8,7 @@ export default function PlayerSlot({ slot, onSlotClick }) {
   return (
     //da sistemare il ratio perchè auemnta di pixel se scegli qualcosa
     <button
-      className="flex flex-col aspect-square items-center justify-center bg-white/40 rounded-xl border-2 border-gray-200 text-center cursor-pointer"
+      className="flex flex-col aspect-square w-full items-center justify-center bg-white/40 rounded-xl border-2 border-gray-200 text-center cursor-pointer"
       onClick={onSlotClick}
     >
       {slot?.player ? (
