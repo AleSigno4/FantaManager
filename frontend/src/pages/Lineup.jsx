@@ -12,6 +12,7 @@ export default function Lineup() {
   const [benchLineup, setBenchLineup] = useState([]);
 
   const [slotChosen, setSlotChosen] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const typeFanta = "Mantra";
 
@@ -90,7 +91,85 @@ export default function Lineup() {
 
   return (
     <main className="flex flex-row items-center gap-6 px-4">
-      <div className="flex-5 bg-amber-500 h-full"></div>
+      <div className="flex-5 h-full ml-4">
+        <div className="flex justify-between items-center">
+          <h2 className="text-gray-100 text-3xl font-bold mb-4">Titolari</h2>
+          <div className="flex gap-4 items-center">
+            <h3 className="text-gray-300 text-xl font-semibold">Modulo:</h3>
+            <div className="relative">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className={`flex bg-white/40 ${isDropdownOpen ? "rounded-t-lg" : "rounded-lg"} text-lg text-gray-100 font-bold p-2 gap-2 items-center`}
+              >
+                {module}<span className="inline-block">
+                {isDropdownOpen ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={24}
+                    height={24}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 15l6 -6l6 6" />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={24}
+                    height={24}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 9l6 6l6 -6" />
+                  </svg>
+                )}</span>
+              </button>
+              {isDropdownOpen && (
+                <div className="bg-white/40 rounded-b-lg text-lg text-gray-100 font-bold text-center absolute w-full top-full left-0">
+                  {typeFanta === "Classic"
+                    ? Object.keys(classicModules).map((mod) => (
+                        <button
+                          key={mod}
+                          className="hover:bg-white/20 cursor-pointer w-full"
+                          onClick={() => {
+                            createLineup(mod);
+                            setIsDropdownOpen(false);
+                          }}
+                        >
+                          {mod}
+                        </button>
+                      ))
+                    : Object.keys(mantraModules).map((mod) => (
+                        <button
+                          key={mod}
+                          className="hover:bg-white/20 cursor-pointer w-full"
+                          onClick={() => {
+                            createLineup(mod);
+                            setIsDropdownOpen(false);
+                          }}
+                        >
+                          {mod}
+                        </button>
+                      ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="bg-white/50"></div>
+      </div>
       <div className="flex-3 h-full p-4">
         <h2 className="text-gray-100 text-2xl font-bold mb-4">Panchina</h2>
         <div className="grid grid-cols-4 gap-4">
@@ -106,15 +185,17 @@ export default function Lineup() {
         </div>
         <div className="flex flex-row w-full gap-4 mt-4">
           <div className="flex-1">
-            <h3 className="text-gray-100 font-bold text-xl">Capitano</h3>
+            <h3 className="text-gray-100 font-bold text-xl mb-1">Capitano</h3>
             <button
               className="bg-white/40 border-2 border-gray-200 rounded-lg w-full font-bold p-2 cursor-pointer"
-              onClick={() => handleSlotClick({
-                type: "captain",
-                index: 0,
-                position: "All",
-                team_player_id: null,
-              })}
+              onClick={() =>
+                handleSlotClick({
+                  type: "captain",
+                  index: 0,
+                  position: "All",
+                  team_player_id: null,
+                })
+              }
             >
               <h3 className="text-2xl text-gray-100">
                 {captain ? captain.last_name : "+"}
@@ -122,15 +203,19 @@ export default function Lineup() {
             </button>
           </div>
           <div className="flex-1">
-            <h3 className="text-gray-100 font-bold text-xl">Vicecapitano</h3>
+            <h3 className="text-gray-100 font-bold text-xl mb-1">
+              Vicecapitano
+            </h3>
             <button
               className="bg-white/40 border-2 border-gray-200 rounded-lg w-full font-bold p-2 cursor-pointer"
-              onClick={() => handleSlotClick({
-                type: "vice-captain",
-                index: 0,
-                position: "All",
-                team_player_id: null,
-              })}
+              onClick={() =>
+                handleSlotClick({
+                  type: "vice-captain",
+                  index: 0,
+                  position: "All",
+                  team_player_id: null,
+                })
+              }
             >
               <h3 className="text-2xl text-gray-100">
                 {viceCaptain ? viceCaptain.last_name : "+"}
