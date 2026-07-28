@@ -174,12 +174,12 @@ export default function Lineup() {
             </div>
           </div>
         </div>
-        <div className="bg-white/50 flex-1 min-h-0 overflow-hidden relative mb-6">
+        <div className="bg-white/50 flex-1 min-h-0 overflow-hidden relative mb-4">
           {lineup.map((slot) => {
             return (
               <div
                 key={slot.index}
-                className="w-[8%]"
+                className="w-[10%]"
                 style={{
                   position: "absolute",
                   top: `${slot.y}%`,
