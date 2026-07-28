@@ -153,9 +153,9 @@ export const mantraModules = {
     { position: "M", x: 60, y: 39 },
     { position: "C", x: 45, y: 39 },
     { position: "M", x: 30, y: 39 },
-    { position: "E/W", x: 23, y: 9 },
-    { position: "T/A", x: 45, y: 18 },
-    { position: "E/W", x: 63, y: 9 },
+    { position: "E/W", x: 23, y: 20 },
+    { position: "T/A", x: 45, y: 20 },
+    { position: "E/W", x: 67, y: 20 },
     { position: "A/Pc", x: 45, y: 2 },
   ],
   "4-3-3": [
