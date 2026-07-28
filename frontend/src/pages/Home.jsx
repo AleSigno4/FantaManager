@@ -1,4 +1,6 @@
 import teams from "../mocks/teams.json";
+import { Link } from "react-router-dom";
+
 
 export default function Home() {
   return (
@@ -55,9 +57,9 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-center justify-center mt-4">
                 <h3 className="text-5xl font-bold text-white">VS</h3>
-                <button className="mt-8 bg-green-600 text-white text-lg font-bold px-4 py-2 rounded hover:bg-green-500 transition-colors cursor-pointer">
-                  Insert lineup
-                </button>
+                <Link to="/lineup" className="mt-8 bg-green-600 text-white text-lg text-center font-bold px-4 py-2 rounded hover:bg-green-500 transition-colors cursor-pointer">
+                  Inserisci formazione
+                </Link>
               </div>
               <div className="flex flex-col items-center justify-center mt-4">
                 <img
