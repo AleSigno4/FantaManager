@@ -56,7 +56,9 @@ function App() {
               <li><a href="#" className="text-white text-2xl hover:text-green-300">Injuries</a></li>
               <li><a href="#" className="text-white text-2xl hover:text-green-300">Teams</a></li>
               <li><a href="#" className="text-white text-2xl hover:text-green-300">Calendar</a></li>
-              <li><a href="#" className="text-white text-2xl hover:text-green-300">Leaderboard</a></li>
+              <li><Link to="/leaderboard" className="text-white text-2xl hover:text-green-300">
+                  Leaderboard
+                </Link></li>
               <li><a href="#" className="text-white text-2xl hover:text-green-300">League Stats</a></li>
               <li>
                 <Link to="/players" className="text-white text-2xl hover:text-green-300">

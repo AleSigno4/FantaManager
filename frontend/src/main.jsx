@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import PlayerList from "./pages/PlayerList.jsx";
 import Lineup from "./pages/Lineup.jsx";
+import Leaderboard from "./pages/Leaderboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "lineup",
         element: <Lineup />,
+      },
+      {
+        path: "leaderboard",
+        element: <Leaderboard />,
       },
     ],
   },
