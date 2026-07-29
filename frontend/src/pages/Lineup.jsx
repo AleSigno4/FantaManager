@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 
 export default function Lineup() {
   const [module, setModule] = useState("4-4-2");
-  const [captain, setCaptain] = useState("");
-  const [viceCaptain, setViceCaptain] = useState("");
+  const [captain, setCaptain] = useState(null);
+  const [viceCaptain, setViceCaptain] = useState(null);
   const [lineup, setLineup] = useState([]);
   const [benchLineup, setBenchLineup] = useState([]);
 
@@ -72,23 +72,40 @@ export default function Lineup() {
   };
 
   const handleSelectPlayer = (player) => {
+    const oldStarterSlot = lineup.find(
+      (temp) => temp.team_player_id === player.id,
+    );
+    const oldBenchSlot = benchLineup.find(
+      (temp) => temp.team_player_id === player.id,
+    );
+    const wasCaptain = captain?.id === player.id;
+    const wasViceCaptain = viceCaptain?.id === player.id;
+
+
     if (slotChosen.type === "captain") {
+      if(wasViceCaptain)
+        setViceCaptain(null);
       setCaptain(player);
     } else if (slotChosen.type === "vice-captain") {
+      if(wasCaptain)
+        setCaptain(null);
       setViceCaptain(player);
     } else {
-      const updateSlot = (slot) => {
-        if (slot.index === slotChosen.index) {
+      const updateSlotFor = (collectionType) => (slot) => {
+        if (slot.index === slotChosen.index && slotChosen.type === collectionType) {
           return { ...slot, team_player_id: player.id, player: player };
+        }
+        if (collectionType === "starter" && slot.index === oldStarterSlot?.index) {
+          return { ...slot, team_player_id: null, player: undefined };
+        }
+        if (collectionType === "bench" && slot.index === oldBenchSlot?.index) {
+          return { ...slot, team_player_id: null, player: undefined };
         }
         return slot;
       };
 
-      if (slotChosen.type === "starter") {
-        setLineup(lineup.map(updateSlot));
-      } else {
-        setBenchLineup(benchLineup.map(updateSlot));
-      }
+      setLineup(lineup.map(updateSlotFor("starter")));
+      setBenchLineup(benchLineup.map(updateSlotFor("bench")));
     }
     setSlotChosen(null);
   };
