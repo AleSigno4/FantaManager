@@ -1,0 +1,12 @@
+[
+  { "id": 1, "player_name": "Hakan Calhanoglu", "team_name": "Inter", "assists": 9 },
+  { "id": 2, "player_name": "Teun Koopmeiners", "team_name": "Atalanta", "assists": 8 },
+  { "id": 3, "player_name": "Khvicha Kvaratskhelia", "team_name": "Napoli", "assists": 8 },
+  { "id": 4, "player_name": "Theo Hernandez", "team_name": "Milan", "assists": 7 },
+  { "id": 5, "player_name": "Federico Chiesa", "team_name": "Juventus", "assists": 6 },
+  { "id": 6, "player_name": "Lorenzo Pellegrini", "team_name": "Roma", "assists": 6 },
+  { "id": 7, "player_name": "Riccardo Orsolini", "team_name": "Bologna", "assists": 5 },
+  { "id": 8, "player_name": "Luis Alberto", "team_name": "Lazio", "assists": 5 },
+  { "id": 9, "player_name": "Nicolas Gonzalez", "team_name": "Fiorentina", "assists": 4 },
+  { "id": 10, "player_name": "Ivan Ilic", "team_name": "Torino", "assists": 4 }
+]

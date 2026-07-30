@@ -1,0 +1,22 @@
+[
+  { "id": 1, "team_name": "Inter", "played": 17, "points": 41, "goals_for": 38, "goals_against": 14 },
+  { "id": 2, "team_name": "Napoli", "played": 17, "points": 39, "goals_for": 34, "goals_against": 15 },
+  { "id": 3, "team_name": "Juventus", "played": 17, "points": 36, "goals_for": 30, "goals_against": 16 },
+  { "id": 4, "team_name": "Atalanta", "played": 17, "points": 33, "goals_for": 32, "goals_against": 19 },
+  { "id": 5, "team_name": "Milan", "played": 17, "points": 31, "goals_for": 27, "goals_against": 20 },
+  { "id": 6, "team_name": "Bologna", "played": 17, "points": 29, "goals_for": 24, "goals_against": 19 },
+  { "id": 7, "team_name": "Roma", "played": 17, "points": 27, "goals_for": 23, "goals_against": 21 },
+  { "id": 8, "team_name": "Lazio", "played": 17, "points": 26, "goals_for": 22, "goals_against": 22 },
+  { "id": 9, "team_name": "Fiorentina", "played": 17, "points": 24, "goals_for": 21, "goals_against": 23 },
+  { "id": 10, "team_name": "Torino", "played": 17, "points": 22, "goals_for": 18, "goals_against": 22 },
+  { "id": 11, "team_name": "Udinese", "played": 17, "points": 21, "goals_for": 17, "goals_against": 24 },
+  { "id": 12, "team_name": "Genoa", "played": 17, "points": 20, "goals_for": 16, "goals_against": 25 },
+  { "id": 13, "team_name": "Cagliari", "played": 17, "points": 19, "goals_for": 15, "goals_against": 26 },
+  { "id": 14, "team_name": "Hellas Verona", "played": 17, "points": 18, "goals_for": 14, "goals_against": 27 },
+  { "id": 15, "team_name": "Como", "played": 17, "points": 18, "goals_for": 16, "goals_against": 28 },
+  { "id": 16, "team_name": "Parma", "played": 17, "points": 17, "goals_for": 13, "goals_against": 27 },
+  { "id": 17, "team_name": "Empoli", "played": 17, "points": 15, "goals_for": 12, "goals_against": 30 },
+  { "id": 18, "team_name": "Lecce", "played": 17, "points": 14, "goals_for": 11, "goals_against": 31 },
+  { "id": 19, "team_name": "Venezia", "played": 17, "points": 12, "goals_for": 10, "goals_against": 33 },
+  { "id": 20, "team_name": "Monza", "played": 17, "points": 9, "goals_for": 9, "goals_against": 35 }
+]

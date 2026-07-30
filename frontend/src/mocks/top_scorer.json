@@ -1,0 +1,12 @@
+[
+  { "id": 1, "player_name": "Lautaro Martinez", "team_name": "Inter", "goals": 15 },
+  { "id": 2, "player_name": "Dusan Vlahovic", "team_name": "Juventus", "goals": 13 },
+  { "id": 3, "player_name": "Victor Osimhen", "team_name": "Napoli", "goals": 12 },
+  { "id": 4, "player_name": "Ademola Lookman", "team_name": "Atalanta", "goals": 11 },
+  { "id": 5, "player_name": "Christian Pulisic", "team_name": "Milan", "goals": 10 },
+  { "id": 6, "player_name": "Riccardo Orsolini", "team_name": "Bologna", "goals": 9 },
+  { "id": 7, "player_name": "Paulo Dybala", "team_name": "Roma", "goals": 8 },
+  { "id": 8, "player_name": "Ciro Immobile", "team_name": "Lazio", "goals": 7 },
+  { "id": 9, "player_name": "Moise Kean", "team_name": "Fiorentina", "goals": 6 },
+  { "id": 10, "player_name": "Duvan Zapata", "team_name": "Torino", "goals": 5 }
+]
