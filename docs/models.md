@@ -93,6 +93,7 @@
 - drawn : int
 - lost: int
 - points: int
+- total_points: int
 - rank : int
 - total_score_for : double
 - total_score_against : double
